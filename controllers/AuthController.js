@@ -7,7 +7,7 @@ import sendEmail from "../services/email.js";
 export async function signup(req, res, next) {
    
     try {
-        const { userName, email, phoneNumber, password } = req.body;
+        const { userName, email, phoneNumber, password ,role} = req.body;
         var avatar =req.file?.filename
       const newUser = new UserM({
         userName,
@@ -15,6 +15,7 @@ export async function signup(req, res, next) {
         phoneNumber,
         password,
         avatar,
+        role
         
       })
       newUser.save()
