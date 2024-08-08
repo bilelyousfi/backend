@@ -26,6 +26,10 @@ const bookingSchema = new Schema({
         type: String,
         required: true
     },
+    etatDelete: {
+        type: Boolean,
+        default: false,
+      },
     status: {
         type: String,
         enum: ['Pending', 'Confirmed', 'Cancelled', 'Completed'],

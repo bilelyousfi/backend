@@ -14,6 +14,7 @@ import catRoute from "./routes/CategoryRoute.js";
 import subcatRoute from "./routes/SubCategoryRoute.js";
 import serviceRoute from "./routes/ServiceRoutes.js";
 import ReviewRoute from "./routes/ReviewRoutes.js";
+import BookingRoute from "./routes/BookingRoute.js";
 
 
 
@@ -59,7 +60,8 @@ const limiter = rateLimit({
   app.use("/category", catRoute);
   app.use("/subcategory", subcatRoute);
   app.use("/service", serviceRoute);
-  app.use("/review",   ReviewRoute);
+  app.use("/booking", BookingRoute);
+  app.use("/review", ReviewRoute);
 
  
 
