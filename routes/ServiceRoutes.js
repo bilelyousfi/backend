@@ -7,7 +7,7 @@ const router = express.Router();
 router.post("/addService", verifyAndAuth, customMulter("service"), servController.createService);
 router.get("/getServiceById/:serviceId", servController.getServiceById);
 router.get("/getAllService", servController.getAllServices);
-router.patch("/deleteService", servController.deleteService);
+router.patch("/deleteService/:serviceId", servController.deleteService);
 router.put("/updateService/:serviceId", customMulter("service"), servController.updateService);
 router.get("/getServiceBySubCategoryId/:subCategoryId", servController.getServicesBySubCategoryId);
 router.get("/getServiceByProviderId", verifyAndAuth, servController.getServicesByProviderId);

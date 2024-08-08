@@ -24,14 +24,18 @@ const reviewSchema = new Schema({
         min: 1,
         max: 5
     },
+    etatDelete: {
+        type: Boolean,
+        default: false,
+      },
     comment: {
         type: String,
         required: false,
         trim: true
     },
-    createdAt: {
-        type: Date,
+    createdAt: {        type: Date,
         default: Date.now
+
     }
 }, {
     timestamps: true
