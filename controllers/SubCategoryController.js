@@ -63,4 +63,24 @@ const getAllSubCategories = async (req, res) => {
         res.status(500).json({ message: 'Error fetching subcategories: ' + error.message });
     }
 };
-export default {addSubCategory,markSubCategoryAsDeleted,getAllSubCategories};
+
+const getSubCategoriesByCategoryId = async (req, res) => {
+    const { categoryId } = req.params;
+
+    try {
+        const subCategories = await SubCategory.find({
+            parent: categoryId,
+            etatDelete: false  // Assurer que vous ne récupérez que les sous-catégories actives
+        });
+
+        if (subCategories.length === 0) {
+            return res.status(404).json({ message: "No subcategories found for this category" });
+        }
+
+        res.status(200).json(subCategories);
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching subcategories: ' + error.message });
+    }
+};
+
+export default {addSubCategory,markSubCategoryAsDeleted,getAllSubCategories,getSubCategoriesByCategoryId};

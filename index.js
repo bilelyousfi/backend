@@ -12,6 +12,7 @@ import connectDB from './config/DBConnection.js'
 import userRoute from "./routes/UserRoute.js";
 import catRoute from "./routes/CategoryRoute.js";
 import subcatRoute from "./routes/SubCategoryRoute.js";
+import serviceRoute from "./routes/ServiceRoutes.js";
 
 
 
@@ -56,6 +57,7 @@ const limiter = rateLimit({
   app.use("/user", userRoute);
   app.use("/category", catRoute);
   app.use("/subcategory", subcatRoute);
+  app.use("/service", serviceRoute);
 
  
 

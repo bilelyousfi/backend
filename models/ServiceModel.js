@@ -31,8 +31,13 @@ const serviceSchema = new Schema({
         type: Boolean,
         default: true
     },
+    etatDelete: {
+        type: Boolean,
+        default: false,
+      },
     avatar: [{
-        type: String
+        type: String,
+        required: true,
     }]
 }, {
     timestamps: true
