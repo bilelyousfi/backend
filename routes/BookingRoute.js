@@ -10,7 +10,6 @@ router.get("/getBookingById/:bookingId", BokController.getBookingById);
 router.put("/updateBooking/:bookingId", BokController.updateBooking);
 router.patch("/deleteBooking/:bookingId", BokController.deleteBooking);
 router.put("/updateBookingStatus/:bookingId", BokController.updateBookingStatus);
-
 router.get("/getBookingsByClientId/:clientId", BokController.getBookingsByClientId);
 router.get("/getBookingsByProviderId/:providerId", BokController.getBookingsByProviderId);
 router.get("/getBookingsByServiceId/:serviceId", BokController.getBookingsByServiceId);
