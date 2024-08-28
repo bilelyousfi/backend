@@ -15,6 +15,8 @@ import subcatRoute from "./routes/SubCategoryRoute.js";
 import serviceRoute from "./routes/ServiceRoutes.js";
 import ReviewRoute from "./routes/ReviewRoutes.js";
 import BookingRoute from "./routes/BookingRoute.js";
+import transactionRoutes  from './routes/TransactionsRoutes.js'
+import paymentRoutes from './routes/paymentRoutes.js';
 
 
 
@@ -62,7 +64,8 @@ const limiter = rateLimit({
   app.use("/service", serviceRoute);
   app.use("/booking", BookingRoute);
   app.use("/review", ReviewRoute);
-
+  app.use('/transaction',transactionRoutes);
+  app.use('/payment', paymentRoutes);
  
 
   

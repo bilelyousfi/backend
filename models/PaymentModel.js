@@ -8,35 +8,17 @@ const paymentSchema = new Schema({
         ref: 'Booking',
         required: true
     },
-    user: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
-    },
     amount: {
         type: Number,
-        required: true
-    },
-    status: {
-        type: String,
-        enum: ['Pending', 'Completed', 'Failed', 'Refunded'],
-        default: 'Pending'
-    },
-    method: {
-        type: String,
         required: true,
-        enum: ['Credit Card', 'PayPal', 'Bank Transfer', 'Other']
-    },
-    transactionId: {
+      },
+      paymentStatus: {
         type: String,
-        required: true
-    },
-    transactionDate: {
-        type: Date,
-        default: Date.now
-    }
+        enum: ['Failed', 'Succeeded'],
+        default: 'Failed',
+      },
 }, {
     timestamps: true
 });
-const PaymentModel = model("Payment", paymentSchema);
+const PaymentModel = model('Payment', paymentSchema);
 export default PaymentModel;
