@@ -117,6 +117,68 @@ const getServicesByProviderId = async (req, res) => {
     }
 };
 
+const searchByServiceType = async (req, res) => {
+    try {
+      const { serviceType } = req.body;
+  
+      if (!serviceType) {
+        return res.status(400).json({ message: 'Service type is required' });
+      }
+  
+      const services = await ServiceM.find({
+        subCategory: serviceType,
+        etatDelete: false, // Exclude soft-deleted services
+      }).populate('provider').populate('subCategory');
+  
+      res.status(200).json({ services });
+    } catch (error) {
+      console.error('Error searching by service type:', error);
+      res.status(500).json({ message: 'Error searching by service type', error: error.message });
+    }
+  };
 
+  // Search by Location
+export const searchByLocation = async (req, res) => {
+    try {
+      const { location } = req.body;
+  
+      if (!location) {
+        return res.status(400).json({ message: 'Location is required' });
+      }
+  
+      const services = await ServiceM.find({
+        location: { $regex: location, $options: 'i' }, // Case-insensitive regex match
+        etatDelete: false, // Exclude soft-deleted services
+      }).populate('provider').populate('subCategory');
+  
+      res.status(200).json({ services });
+    } catch (error) {
+      console.error('Error searching by location:', error);
+      res.status(500).json({ message: 'Error searching by location', error: error.message });
+    }
+  };
+  // Search by Availability
+export const searchByAvailability = async (req, res) => {
+    try {
+      const { availability } = req.body;
+  
+      if (availability === undefined) {
+        return res.status(400).json({ message: 'Availability status is required' });
+      }
+  
+      const isAvailable = availability === 'true';
+  
+      const services = await ServiceM.find({
+        availability: isAvailable,
+        etatDelete: false, // Exclude soft-deleted services
+      }).populate('provider').populate('subCategory');
+  
+      res.status(200).json({ services });
+    } catch (error) {
+      console.error('Error searching by availability:', error);
+      res.status(500).json({ message: 'Error searching by availability', error: error.message });
+    }
+  };
+  
 
-export default {createService,getAllServices,getServiceById,deleteService,updateService,getServicesBySubCategoryId,getServicesByProviderId,getServicesByProviderId};
+export default {createService,getAllServices,getServiceById,deleteService,updateService,getServicesBySubCategoryId,getServicesByProviderId,getServicesByProviderId,searchByServiceType,searchByLocation,searchByAvailability};

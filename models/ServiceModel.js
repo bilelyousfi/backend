@@ -31,6 +31,10 @@ const serviceSchema = new Schema({
         type: Boolean,
         default: true
     },
+    location: {
+        type: String, 
+        required: true
+    },
     etatDelete: {
         type: Boolean,
         default: false,

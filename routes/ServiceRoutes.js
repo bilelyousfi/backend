@@ -7,6 +7,11 @@ const router = express.Router();
 router.post("/addService", verifyAndAuth, customMulter("service"), servController.createService);
 router.get("/getServiceById/:serviceId", servController.getServiceById);
 router.get("/getAllService", servController.getAllServices);
+
+router.get("/search/service", servController.searchByServiceType);
+router.get("/search/location", servController.searchByLocation);
+router.get("/search/availability", servController.searchByAvailability);
+
 router.patch("/deleteService/:serviceId", servController.deleteService);
 router.put("/updateService/:serviceId", customMulter("service"), servController.updateService);
 router.get("/getServiceBySubCategoryId/:subCategoryId", servController.getServicesBySubCategoryId);
